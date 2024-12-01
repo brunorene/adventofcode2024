@@ -22,8 +22,8 @@ func TestInputFile_ReadLines(t *testing.T) {
 			results: []string{"test1", "test2", "test3"},
 		},
 		{
-			name:    "ok with empty line",
-			fields:  fields{content: "test1\ntest2\ntest3\n"},
+			name:    "ok with empty lines",
+			fields:  fields{content: "test1\ntest2\n\ntest3\n"},
 			results: []string{"test1", "test2", "test3"},
 		},
 	}
