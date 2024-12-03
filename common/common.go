@@ -18,6 +18,10 @@ func ReadInput(filename string) (*InputFile, error) {
 	return &InputFile{content: string(content)}, nil
 }
 
+func (i *InputFile) Read() string {
+	return i.content
+}
+
 func (i *InputFile) ReadLines(yield func(string) bool) {
 	var line string
 
