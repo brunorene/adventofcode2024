@@ -4,6 +4,7 @@ import (
 	"adventofcode2024/day01"
 	"adventofcode2024/day02"
 	"adventofcode2024/day03"
+	"adventofcode2024/day04"
 )
 
 func main() {
@@ -13,4 +14,6 @@ func main() {
 	day02.Solve2("input.txt")
 	day03.Solve1("input.txt")
 	day03.Solve2("input.txt")
+	day04.Solve1("input.txt")
+	day04.Solve2("input.txt")
 }
