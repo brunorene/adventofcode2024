@@ -21,11 +21,7 @@ func (m matrix) find1(row, col int, str string) (count int) {
 
 			for {
 				if currentRow >= len(m) || currentCol >= len(m[row]) ||
-					currentRow < 0 || currentCol < 0 {
-					continue outerLoop
-				}
-
-				if m[currentRow][currentCol] != str[currentStr] {
+					currentRow < 0 || currentCol < 0 || m[currentRow][currentCol] != str[currentStr] {
 					continue outerLoop
 				}
 
@@ -45,42 +41,27 @@ func (m matrix) find1(row, col int, str string) (count int) {
 	return count
 }
 
-type format int
-
-const (
-	top    format = iota
-	bottom format = iota
-	left   format = iota
-	right  format = iota
-)
+type format struct {
+	topLeft     byte
+	topRight    byte
+	bottomLeft  byte
+	bottomRight byte
+}
 
 func (m matrix) find2(row, col int) (count int) {
 	if m[row][col] != 'A' || row == 0 || row == len(m)-1 || col == 0 || col == len(m[row])-1 {
 		return 0
 	}
 
+	top := format{'M', 'M', 'S', 'S'}
+	bottom := format{'S', 'S', 'M', 'M'}
+	left := format{'M', 'S', 'M', 'S'}
+	right := format{'S', 'M', 'S', 'M'}
+
 	for _, form := range []format{top, bottom, left, right} {
-		switch form {
-		case top:
-			if m[row-1][col-1] == 'M' && m[row-1][col+1] == 'M' &&
-				m[row+1][col-1] == 'S' && m[row+1][col+1] == 'S' {
-				count++
-			}
-		case bottom:
-			if m[row+1][col-1] == 'M' && m[row+1][col+1] == 'M' &&
-				m[row-1][col-1] == 'S' && m[row-1][col+1] == 'S' {
-				count++
-			}
-		case left:
-			if m[row-1][col-1] == 'M' && m[row+1][col-1] == 'M' &&
-				m[row-1][col+1] == 'S' && m[row+1][col+1] == 'S' {
-				count++
-			}
-		case right:
-			if m[row-1][col+1] == 'M' && m[row+1][col+1] == 'M' &&
-				m[row-1][col-1] == 'S' && m[row+1][col-1] == 'S' {
-				count++
-			}
+		if m[row-1][col-1] == form.topLeft && m[row-1][col+1] == form.topRight &&
+			m[row+1][col-1] == form.bottomLeft && m[row+1][col+1] == form.bottomRight {
+			count++
 		}
 	}
 
