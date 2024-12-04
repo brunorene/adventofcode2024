@@ -63,11 +63,11 @@ func find2(m matrix, row, col int) (count int) {
 	for _, form := range []format{top, bottom, left, right} {
 		if m[row-1][col-1] == form.topLeft && m[row-1][col+1] == form.topRight &&
 			m[row+1][col-1] == form.bottomLeft && m[row+1][col+1] == form.bottomRight {
-			count++
+			return 1
 		}
 	}
 
-	return count
+	return 0
 }
 
 func Solve(filename, part string, find func(matrix, int, int) int) {
