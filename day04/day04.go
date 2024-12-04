@@ -7,7 +7,9 @@ import (
 
 type matrix [][]byte
 
-func (m matrix) find1(row, col int, str string) (count int) {
+func find1(m matrix, row, col int) (count int) {
+	xmas := "XMAS"
+
 	for _, horz := range []int{-1, 0, 1} {
 	outerLoop:
 		for _, vert := range []int{-1, 0, 1} {
@@ -21,7 +23,7 @@ func (m matrix) find1(row, col int, str string) (count int) {
 
 			for {
 				if currentRow >= len(m) || currentCol >= len(m[row]) ||
-					currentRow < 0 || currentCol < 0 || m[currentRow][currentCol] != str[currentStr] {
+					currentRow < 0 || currentCol < 0 || m[currentRow][currentCol] != xmas[currentStr] {
 					continue outerLoop
 				}
 
@@ -29,7 +31,7 @@ func (m matrix) find1(row, col int, str string) (count int) {
 				currentCol += horz
 				currentStr++
 
-				if currentStr == len(str) {
+				if currentStr == len(xmas) {
 					count++
 
 					break
@@ -48,7 +50,7 @@ type format struct {
 	bottomRight byte
 }
 
-func (m matrix) find2(row, col int) (count int) {
+func find2(m matrix, row, col int) (count int) {
 	if m[row][col] != 'A' || row == 0 || row == len(m)-1 || col == 0 || col == len(m[row])-1 {
 		return 0
 	}
@@ -68,7 +70,7 @@ func (m matrix) find2(row, col int) (count int) {
 	return count
 }
 
-func Solve1(filename string) {
+func Solve(filename, part string, find func(matrix, int, int) int) {
 	input, err := common.ReadInput("day04/" + filename)
 	if err != nil {
 		panic(err.Error())
@@ -84,32 +86,17 @@ func Solve1(filename string) {
 
 	for row := range matrix {
 		for col := range matrix[row] {
-			count += matrix.find1(row, col, "XMAS")
+			count += find(matrix, row, col)
 		}
 	}
 
-	fmt.Println("solution day 04 part 01:", count)
+	fmt.Printf("solution day 04 part 0%s: %d\n", part, count)
+}
+
+func Solve1(filename string) {
+	Solve(filename, "1", find1)
 }
 
 func Solve2(filename string) {
-	input, err := common.ReadInput("day04/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
-
-	var count int
-
-	matrix := make(matrix, 0, 140)
-
-	for line := range input.ReadLines {
-		matrix = append(matrix, []byte(line))
-	}
-
-	for row := range matrix {
-		for col := range matrix[row] {
-			count += matrix.find2(row, col)
-		}
-	}
-
-	fmt.Println("solution day 04 part 02:", count)
+	Solve(filename, "1", find2)
 }
