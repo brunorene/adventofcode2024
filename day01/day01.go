@@ -13,9 +13,7 @@ func Solve1(filename string) {
 	var sum int64
 
 	input, err := common.ReadInput("day01/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	var left, right []int
 
@@ -23,16 +21,12 @@ func Solve1(filename string) {
 		parts := strings.Split(line, "   ")
 
 		leftNum, err := strconv.Atoi(parts[0])
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		left = append(left, leftNum)
 
 		rightNum, err := strconv.Atoi(parts[1])
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		right = append(right, rightNum)
 	}
@@ -51,9 +45,7 @@ func Solve2(filename string) {
 	var sum int64
 
 	input, err := common.ReadInput("day01/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	left := make(map[int]int64)
 	leftCount := make(map[int]int64)
@@ -63,17 +55,13 @@ func Solve2(filename string) {
 		parts := strings.Split(line, "   ")
 
 		leftNum, err := strconv.Atoi(parts[0])
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		leftCount[leftNum] += 1
 		left[leftNum] = 0
 
 		rightNum, err := strconv.Atoi(parts[1])
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		right = append(right, rightNum)
 	}

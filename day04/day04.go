@@ -72,9 +72,7 @@ func find2(m matrix, row, col int) (count int) {
 
 func Solve(filename, part string, find func(matrix, int, int) int) {
 	input, err := common.ReadInput("day04/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	var count int
 

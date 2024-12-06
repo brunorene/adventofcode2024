@@ -29,9 +29,7 @@ func numbers(mul string) (left, right int64, err error) {
 
 func Solve1(filename string) {
 	input, err := common.ReadInput("day03/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	line := input.Read()
 
@@ -41,9 +39,7 @@ func Solve1(filename string) {
 
 	for _, mul := range matcher.FindAllString(line, -1) {
 		left, right, err := numbers(mul)
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		result += left * right
 	}
@@ -53,9 +49,7 @@ func Solve1(filename string) {
 
 func Solve2(filename string) {
 	input, err := common.ReadInput("day03/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	line := input.Read()
 
@@ -68,9 +62,7 @@ func Solve2(filename string) {
 
 	for _, mul := range matcher.FindAllString(line, -1) {
 		left, right, err := numbers(mul)
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		result += left * right
 	}

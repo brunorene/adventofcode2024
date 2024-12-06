@@ -1,7 +1,6 @@
 package common
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -11,9 +10,7 @@ type InputFile struct {
 
 func ReadInput(filename string) (*InputFile, error) {
 	content, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, fmt.Errorf("read file: %w", err)
-	}
+	CheckError(err)
 
 	return &InputFile{content: string(content)}, nil
 }
@@ -46,4 +43,10 @@ func (i *InputFile) ReadLines(yield func(string) bool) {
 	}
 
 	yield(line)
+}
+
+func CheckError(err error) {
+	if err != nil {
+		panic(err.Error())
+	}
 }

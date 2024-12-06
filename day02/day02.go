@@ -10,9 +10,7 @@ import (
 func toInts(in []string) (out []int) {
 	for _, level := range in {
 		val, err := strconv.Atoi(level)
-		if err != nil {
-			panic(err.Error())
-		}
+		common.CheckError(err)
 
 		out = append(out, val)
 	}
@@ -34,9 +32,7 @@ func goodLevel(isIncreasing bool, first, second int) bool {
 
 func Solve1(filename string) {
 	input, err := common.ReadInput("day02/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	var safeCount int
 
@@ -83,9 +79,7 @@ func reportsToCheck(report []int) (result [][]int) {
 
 func Solve2(filename string) {
 	input, err := common.ReadInput("day02/" + filename)
-	if err != nil {
-		panic(err.Error())
-	}
+	common.CheckError(err)
 
 	var safeCount int
 
