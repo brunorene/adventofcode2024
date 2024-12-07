@@ -1,8 +1,17 @@
 package common
 
 import (
+	"fmt"
 	"os"
+	"time"
 )
+
+func Timer(name string) func() {
+	start := time.Now()
+	return func() {
+		fmt.Printf("%s took %v\n", name, time.Since(start))
+	}
+}
 
 type InputFile struct {
 	content string
