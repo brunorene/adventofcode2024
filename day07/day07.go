@@ -51,7 +51,7 @@ func isValid(eq equation, operator string, part2 bool) bool {
 		newEq = equation{terms: append([]int64{eq.terms[0] * eq.terms[1]}, eq.terms[2:]...), result: eq.result}
 	}
 
-	if part2 && operator == "||" {
+	if operator == "||" {
 		start, err := strconv.ParseInt(fmt.Sprintf("%d%d", eq.terms[0], eq.terms[1]), 10, 64)
 		common.CheckError(err)
 
