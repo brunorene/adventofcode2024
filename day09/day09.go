@@ -22,11 +22,11 @@ func clean(memory []int) []int {
 	return memory
 }
 
-func getMemory() (addresses []file, space []file, memory []int) {
+func getMemory(filename string) (addresses []file, space []file, memory []int) {
 	var id int
 	isFile := true
 
-	content, err := os.ReadFile("day09/input.txt")
+	content, err := os.ReadFile("day09/" + filename)
 	common.CheckError(err)
 
 	for _, size := range content {
@@ -68,8 +68,8 @@ func getMemory() (addresses []file, space []file, memory []int) {
 	return addresses, space, memory
 }
 
-func Solve1() {
-	_, _, memory := getMemory()
+func Solve1(filename string) {
+	_, _, memory := getMemory(filename)
 
 	var address int
 
@@ -92,8 +92,8 @@ func Solve1() {
 	fmt.Println("solution day 09 part 01:", checksum)
 }
 
-func Solve2() {
-	addresses, space, memory := getMemory()
+func Solve2(filename string) {
+	addresses, space, memory := getMemory(filename)
 
 	for idx := len(addresses) - 1; idx >= 0; idx-- {
 		lastFile := addresses[idx]
