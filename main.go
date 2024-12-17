@@ -1,6 +1,8 @@
 package main
 
-import "adventofcode2024/day14"
+import (
+	"adventofcode2024/day15"
+)
 
 func main() {
 	//day01.Solve1("input.txt")
@@ -29,6 +31,8 @@ func main() {
 	//day12.Solve2("input.txt")
 	//day13.Solve("input.txt", new(big.Int))
 	//day13.Solve("input.txt", big.NewInt(10000000000000))
-	day14.Solve1("input.txt")
-	day14.Solve2("input.txt")
+	//day14.Solve1("input.txt")
+	//day14.Solve2("input.txt")
+	day15.Solve1("input.txt")
+	day15.Solve2("input.txt")
 }

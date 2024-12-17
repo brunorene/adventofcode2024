@@ -16,8 +16,6 @@ type robot struct {
 	quadrant           int
 }
 
-//type grid [7][11]int
-
 type grid [103][101]int
 
 func (r *robot) move(time, rows, cols int) {
