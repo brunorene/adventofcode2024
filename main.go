@@ -1,7 +1,7 @@
 package main
 
 import (
-	"adventofcode2024/day17"
+	"adventofcode2024/day18"
 )
 
 func main() {
@@ -38,5 +38,7 @@ func main() {
 	//day16.Solve1("input.txt")
 	//day16.Solve2("input.txt")
 	//day17.Solve1("input.txt")
-	day17.Solve2("input.txt")
+	//day17.Solve2("input.txt")
+	day18.Solve1("input.txt")
+	day18.Solve2("input.txt")
 }

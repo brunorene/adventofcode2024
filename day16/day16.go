@@ -15,8 +15,6 @@ type maze struct {
 	lines [][]rune
 }
 
-type direction position
-
 type movement struct {
 	pos position
 	dir direction
@@ -27,6 +25,8 @@ type score struct {
 	value int
 	path  string
 }
+
+type direction position
 
 var (
 	north = direction{x: 0, y: -1}
