@@ -15,7 +15,6 @@ type racetrack struct {
 	walls map[Coords]struct{}
 	lines [][]rune
 	start Coords
-	end   Coords
 }
 
 func parse(filename string) (result racetrack) {
@@ -36,10 +35,6 @@ func parse(filename string) (result racetrack) {
 
 			if cell == 'S' {
 				result.start = Coords{x, y}
-			}
-
-			if cell == 'E' {
-				result.end = Coords{x, y}
 			}
 		}
 
